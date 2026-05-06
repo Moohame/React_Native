@@ -10,6 +10,20 @@ export default function TabOneScreen() {
   // setValgtFelt brukes for å endre valgtFelt
   // null betyr at ingenting er valgt ennå
   const [valgtFelt, setValgtFelt] = useState<"A" | "B" | "C" | "D" | "E" | "F" | null>(null);
+  const [feltTallA, setFeltTallA] = useState(0);
+  const [feltTallB, setFeltTallB] = useState(0);
+  const [feltTallC, setFeltTallC] = useState(0);
+  const [feltTallD, setFeltTallD] = useState(0);
+  const [feltTallE, setFeltTallE] = useState(0);
+  const [feltTallF, setFeltTallF] = useState(0);
+
+  const FeltTallA = 0;
+  const FeltTallB = 0;
+  const FeltTallC = 0;
+  const FeltTallD = 0;
+  const FeltTallE = 0;
+  const FeltTallF = 0;
+
   
   return (
     // Ytterste container (som en <div> på web)
@@ -19,6 +33,7 @@ export default function TabOneScreen() {
     <Text style={styles.title}>Velg en karakter</Text>
     
     {/* ================= FELT A ================= */}
+
     <Pressable
       // style kan være en liste (array)
       // React Native slår stilene sammen
@@ -28,9 +43,15 @@ export default function TabOneScreen() {
     ]}
     // Når brukeren trykker:
     // oppdaterer vi state
-    onPress={() => setValgtFelt("A")}
+    
+    onPress={() => {
+      setValgtFelt("A");
+      setFeltTallA(feltTallA + 1);
+      console.log("Knapp 1 trykka");
+    }}
   >
     <Text style={styles.feltTekst}>1</Text>
+    <Text style={styles.feltTall}>Er valgt {feltTallA} ganger</Text>
   </Pressable>
   {/* ================= FELT B ================= */}
   <Pressable
@@ -38,9 +59,14 @@ export default function TabOneScreen() {
       styles.felt,
       valgtFelt === "B" && styles.aktivtFelt,
     ]}
-    onPress={() => setValgtFelt("B")}
+    onPress={() => {
+      setValgtFelt("B");
+      setFeltTallB(feltTallB + 1);
+      console.log("Knapp 2 trykka");
+    }}
   >
     <Text style={styles.feltTekst}>2</Text>
+    <Text style={styles.feltTall}>Er valgt {feltTallB} ganger</Text>
   </Pressable>
 
   {/* ================= FELT C ================= */}
@@ -49,9 +75,14 @@ export default function TabOneScreen() {
       styles.felt,
       valgtFelt === "C" && styles.aktivtFelt,
     ]}
-    onPress={() => setValgtFelt("C")}
+    onPress={() => {
+      setValgtFelt("C");
+      setFeltTallC(feltTallC + 1);
+      console.log("Knapp 3 trykka");
+    }}
   >
     <Text style={styles.feltTekst}>3</Text>
+    <Text style={styles.feltTall}>Er valgt {feltTallC} ganger</Text>
   </Pressable>
 
   {/* ================= FELT D ================= */}
@@ -60,9 +91,14 @@ export default function TabOneScreen() {
       styles.felt,
       valgtFelt === "D" && styles.aktivtFelt,
     ]}
-    onPress={() => setValgtFelt("D")}
+    onPress={() => {
+      setValgtFelt("D");
+      setFeltTallD(feltTallD + 1);
+      console.log("Knapp 4 trykka");
+    }}
   >
     <Text style={styles.feltTekst}>4</Text>
+    <Text style={styles.feltTall}>Er valgt {feltTallD} ganger</Text>
   </Pressable>
 
   {/* ================= FELT E ================= */}
@@ -71,9 +107,14 @@ export default function TabOneScreen() {
       styles.felt,
       valgtFelt === "E" && styles.aktivtFelt,
     ]}
-    onPress={() => setValgtFelt("E")}
+    onPress={() => {
+      setValgtFelt("E");
+      setFeltTallE(feltTallE + 1);
+      console.log("Knapp 5 trykka");
+    }}
   >
     <Text style={styles.feltTekst}>5</Text>
+    <Text style={styles.feltTall}>Er valgt {feltTallE} ganger</Text>
   </Pressable>
 
   {/* ================= FELT F ================= */}
@@ -82,18 +123,31 @@ export default function TabOneScreen() {
       styles.felt,
       valgtFelt === "F" && styles.aktivtFelt,
     ]}
-    onPress={() => setValgtFelt("F")}
+    onPress={() => {
+      setValgtFelt("F");
+      setFeltTallF(feltTallF + 1);
+      console.log("Knapp 6 trykka");
+    }}
   >
     <Text style={styles.feltTekst}>6</Text>
+    <Text style={styles.feltTall}>Er valgt {feltTallF} ganger</Text>
   </Pressable>
 
-  {/* ================= RESULTAT ================= */}
-  {/* Dette vises bare hvis valgtFelt ikke er null */}
-  {valgtFelt && (
-    <View style={styles.resultat}>
-      <Text>Du har valgt: {valgtFelt}</Text>
+  {/* ================= Nullstill ================= */}
+  <Pressable
+  onPress={() => {
+    setFeltTallA(0);
+    setFeltTallB(0);
+    setFeltTallC(0);
+    setFeltTallD(0);
+    setFeltTallE(0);
+    setFeltTallF(0);
+  }}  
+  >
+    <View style={styles.nullstill}>
+      <Text style={styles.nullstillTekst}>Nullstill</Text>
     </View>
-  )}
+  </Pressable>
 </View>
 );
 }
@@ -113,7 +167,7 @@ const styles = StyleSheet.create({
 },
 // Standard stil for feltene
   felt: {
-    padding: 20,
+    padding:  20,
     backgroundColor: "#ddd", // Grå bakgrunn
     marginBottom: 10,
     borderRadius: 8,
@@ -129,11 +183,17 @@ const styles = StyleSheet.create({
     color: "#000",
 },
 // Boksen som vises etter at noe er valgt
-  resultat: {
+  nullstill: {
     marginTop: 30,
     padding: 20,
-    backgroundColor: "#eee",
+    backgroundColor: "#ed7a7a",
     borderRadius: 8,
     alignItems: "center",
 },
+
+nullstillTekst: {
+    fontSize: 20,
+    textAlign: "center",
+    color: "#771919",
+  }
 });
