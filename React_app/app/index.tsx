@@ -2,6 +2,8 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 // Importerer useState for å kunne lagre tilstand (state)
 import { useState } from "react";
+// Importerer liste fra artister.json
+import artister from "../data/artister.json"
 // Dette er skjermen som vises i første tab
 export default function TabOneScreen() {
 
@@ -24,6 +26,12 @@ export default function TabOneScreen() {
   const FeltTallE = 0;
   const FeltTallF = 0;
 
+  type Artist = {
+    id: number;
+    name: string;
+  };
+
+  const valgtArtist = (artister as Artist[]).find((a) => a.id === valgtIndex);
   
   return (
     // Ytterste container (som en <div> på web)
@@ -50,7 +58,7 @@ export default function TabOneScreen() {
       console.log("Knapp 1 trykka");
     }}
   >
-    <Text style={styles.feltTekst}>1</Text>
+    <Text style={styles.feltTekst}>{}</Text>
     <Text style={styles.feltTall}>Er valgt {feltTallA} ganger</Text>
   </Pressable>
   {/* ================= FELT B ================= */}
