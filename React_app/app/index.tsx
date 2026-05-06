@@ -9,14 +9,14 @@ export default function TabOneScreen() {
   // valgtFelt lagrer hvilket felt som er valgt
   // setValgtFelt brukes for å endre valgtFelt
   // null betyr at ingenting er valgt ennå
-  const [valgtFelt, setValgtFelt] = useState<"A" | "B" | null>(null);
+  const [valgtFelt, setValgtFelt] = useState<"A" | "B" | "C" | "D" | "E" | "F" | null>(null);
   
   return (
     // Ytterste container (som en <div> på web)
     <View style={styles.container}>
       
       {/* Overskrift */}
-    <Text style={styles.title}>Velg et felt</Text>
+    <Text style={styles.title}>Velg en karakter</Text>
     
     {/* ================= FELT A ================= */}
     <Pressable
@@ -30,7 +30,7 @@ export default function TabOneScreen() {
     // oppdaterer vi state
     onPress={() => setValgtFelt("A")}
   >
-    <Text style={styles.feltTekst}>Felt A</Text>
+    <Text style={styles.feltTekst}>1</Text>
   </Pressable>
   {/* ================= FELT B ================= */}
   <Pressable
@@ -40,8 +40,53 @@ export default function TabOneScreen() {
     ]}
     onPress={() => setValgtFelt("B")}
   >
-    <Text style={styles.feltTekst}>Felt B</Text>
+    <Text style={styles.feltTekst}>2</Text>
   </Pressable>
+
+  {/* ================= FELT C ================= */}
+  <Pressable
+    style={[
+      styles.felt,
+      valgtFelt === "C" && styles.aktivtFelt,
+    ]}
+    onPress={() => setValgtFelt("C")}
+  >
+    <Text style={styles.feltTekst}>3</Text>
+  </Pressable>
+
+  {/* ================= FELT D ================= */}
+  <Pressable
+    style={[
+      styles.felt,
+      valgtFelt === "D" && styles.aktivtFelt,
+    ]}
+    onPress={() => setValgtFelt("D")}
+  >
+    <Text style={styles.feltTekst}>4</Text>
+  </Pressable>
+
+  {/* ================= FELT E ================= */}
+  <Pressable
+    style={[
+      styles.felt,
+      valgtFelt === "E" && styles.aktivtFelt,
+    ]}
+    onPress={() => setValgtFelt("E")}
+  >
+    <Text style={styles.feltTekst}>5</Text>
+  </Pressable>
+
+  {/* ================= FELT F ================= */}
+  <Pressable
+    style={[
+      styles.felt,
+      valgtFelt === "F" && styles.aktivtFelt,
+    ]}
+    onPress={() => setValgtFelt("F")}
+  >
+    <Text style={styles.feltTekst}>6</Text>
+  </Pressable>
+
   {/* ================= RESULTAT ================= */}
   {/* Dette vises bare hvis valgtFelt ikke er null */}
   {valgtFelt && (
@@ -75,7 +120,7 @@ const styles = StyleSheet.create({
 },
 // Ekstra stil som legges til når feltet er valgt
   aktivtFelt: {
-    backgroundColor: "#4CAF50", // Grønn bakgrunn
+    backgroundColor: "#098cff", // Grønn bakgrunn
 },
 // Tekst inni feltene
   feltTekst: {
