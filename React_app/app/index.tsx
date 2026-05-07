@@ -3,7 +3,8 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 // Importerer useState for å kunne lagre tilstand (state)
 import { useState } from "react";
 // Importerer liste fra artister.json
-import artister from "../data/artister.json"
+import artister from "../data/artister.json";
+ 
 // Dette er skjermen som vises i første tab
 export default function TabOneScreen() {
 
@@ -26,20 +27,15 @@ export default function TabOneScreen() {
   const FeltTallE = 0;
   const FeltTallF = 0;
 
-  type Artist = {
-    id: number;
-    name: string;
-  };
+  // Define a type matching your data shape
 
-  const valgtArtist = (artister as Artist[]).find((a) => a.id === valgtIndex);
-  
   return (
     // Ytterste container (som en <div> på web)
     <View style={styles.container}>
       
       {/* Overskrift */}
     <Text style={styles.title}>Velg en karakter</Text>
-    
+
     {/* ================= FELT A ================= */}
 
     <Pressable
@@ -58,7 +54,7 @@ export default function TabOneScreen() {
       console.log("Knapp 1 trykka");
     }}
   >
-    <Text style={styles.feltTekst}>{}</Text>
+    <Text style={styles.feltTekst}>{artister[0].name}</Text>
     <Text style={styles.feltTall}>Er valgt {feltTallA} ganger</Text>
   </Pressable>
   {/* ================= FELT B ================= */}
@@ -73,7 +69,7 @@ export default function TabOneScreen() {
       console.log("Knapp 2 trykka");
     }}
   >
-    <Text style={styles.feltTekst}>2</Text>
+    <Text style={styles.feltTekst}>{artister[1].name}</Text>
     <Text style={styles.feltTall}>Er valgt {feltTallB} ganger</Text>
   </Pressable>
 
@@ -89,7 +85,7 @@ export default function TabOneScreen() {
       console.log("Knapp 3 trykka");
     }}
   >
-    <Text style={styles.feltTekst}>3</Text>
+    <Text style={styles.feltTekst}>{artister[2].name}</Text>
     <Text style={styles.feltTall}>Er valgt {feltTallC} ganger</Text>
   </Pressable>
 
@@ -105,7 +101,7 @@ export default function TabOneScreen() {
       console.log("Knapp 4 trykka");
     }}
   >
-    <Text style={styles.feltTekst}>4</Text>
+    <Text style={styles.feltTekst}>{artister[3].name}</Text>
     <Text style={styles.feltTall}>Er valgt {feltTallD} ganger</Text>
   </Pressable>
 
@@ -121,7 +117,7 @@ export default function TabOneScreen() {
       console.log("Knapp 5 trykka");
     }}
   >
-    <Text style={styles.feltTekst}>5</Text>
+    <Text style={styles.feltTekst}>{artister[4].name}</Text>
     <Text style={styles.feltTall}>Er valgt {feltTallE} ganger</Text>
   </Pressable>
 
@@ -137,7 +133,7 @@ export default function TabOneScreen() {
       console.log("Knapp 6 trykka");
     }}
   >
-    <Text style={styles.feltTekst}>6</Text>
+    <Text style={styles.feltTekst}>{artister[5].name}</Text>
     <Text style={styles.feltTall}>Er valgt {feltTallF} ganger</Text>
   </Pressable>
 
