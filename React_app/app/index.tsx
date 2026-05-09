@@ -18,6 +18,7 @@ export default function TabOneScreen() {
   
   <Pressable>
     <View>
+    {/* For å vise dataen fra jsonen */}
       <FlatList
         data={artister}
         keyExtractor={(item) => item.id.toString()}
