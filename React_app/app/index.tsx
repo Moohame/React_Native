@@ -11,26 +11,59 @@ export default function TabOneScreen() {
 
   return (
     // Ytterste container (som en <div> på web)
-    <View style={styles.container}>
+<View style={styles.container}>
       
       {/* Overskrift */}
     <Text style={styles.title}>Kjente artister</Text>
-  
+
+  {/* Felt 1 */}
   <Pressable>
-    <View>
-    {/* For å vise dataen fra jsonen */}
-      <FlatList
-        data={artister}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-          <View>
-            <Text style={styles.felt}>{item.name}</Text>
-          </View>
-        )}
-      />
+    <View style={styles.felt}>
+      <Text style={styles.feltTekst}>{artister[0].name}</Text>
     </View>
   </Pressable>
-    
+  
+  {/* Felt 2 */}
+  <Pressable>
+    <View style={styles.felt}>
+      <Text style={styles.feltTekst}>{artister[1].name}</Text>
+    </View>
+  </Pressable>
+
+  {/* Felt 3 */}
+  <Pressable>
+    <View style={styles.felt}>
+      <Text style={styles.feltTekst}>{artister[2].name}</Text>
+    </View>
+  </Pressable>
+
+    {/* Felt 4 */}
+  <Pressable>
+    <View style={styles.felt}>
+      <Text style={styles.feltTekst}>{artister[3].name}</Text>
+    </View>
+  </Pressable>
+
+    {/* Felt 5 */}
+  <Pressable>
+    <View style={styles.felt}>
+      <Text style={styles.feltTekst}>{artister[5].name}</Text>
+    </View>
+  </Pressable>
+  
+ {/*  <View>
+  gammele koden for å importere data 
+    <FlatList
+      data={artister}
+      keyExtractor={(item) => item.id.toString()}
+      renderItem={({ item }) => (
+        <View>
+          <Text style={styles.felt}>{item.name}</Text>
+        </View>
+      )}
+    />
+  </View>
+    */}
 </View>
 );
 }
@@ -56,6 +89,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
     borderRadius: 8,
 },
+  feltTekst: {
+
+  },
 // Ekstra stil som legges til når feltet er valgt
   aktivtFelt: {
     backgroundColor: "#098cff", // Grønn bakgrunn
