@@ -77,6 +77,17 @@ export default function TabOneScreen() {
       </View>
     </Pressable>
 
+    {/* Endre valg */}
+    <Pressable
+      onPress={()=> setvalgtArtist(null)}
+      disabled={valgtArtist == null}
+      style={{ opacity: valgtArtist === null ? 0.4 : 1 }}
+    >
+      <View style={[styles.felt, { marginTop: 20, alignItems: "center", }]}> 
+        <Text style={styles.feltTekst}>Endre valg</Text>
+      </View>
+    </Pressable>
+
   </View>
 );
 }
@@ -104,6 +115,7 @@ valgtArtist: {
   felt: {
     padding:  20,
     marginBottom: 10,
+    backgroundColor: "#ddd",
     fontSize: 18,
     borderRadius: 8,
 }
