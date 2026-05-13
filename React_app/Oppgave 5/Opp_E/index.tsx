@@ -4,13 +4,14 @@ import { Pressable, StyleSheet, Text, View, FlatList } from "react-native";
 import { useState } from "react";
 // Importerer liste fra artister.json
 import artister from "../data/artister.json";
+import { Background } from "@react-navigation/elements";
 
 
  
 // Dette er skjermen som vises i første tab
 export default function TabOneScreen() {
 
-  const [valgtArtist,  setvalgtArtist] = useState(null); 
+  const [valgtArtist,  setvalgtArtist] = useState(null);
 
   return (
     
@@ -24,35 +25,35 @@ export default function TabOneScreen() {
 
         {/* Felt 1 */}
     <Pressable onPress={() => setvalgtArtist(artister[0].name)}>
-      <View style={styles.felt}>
+      <View style={[styles.felt, { backgroundColor: valgtArtist === artister[0].name ? '#5bb0ff' : "#ddd" }]}>
         <Text style={styles.feltTekst}>{artister[0].name}</Text>
       </View>
     </Pressable>
     
         {/* Felt 2 */}
     <Pressable onPress={() => setvalgtArtist(artister[1].name)}>
-      <View style={styles.felt}>
+      <View style={[styles.felt, { backgroundColor: valgtArtist === artister[1].name ? '#5bb0ff' : "#ddd" }]}>
         <Text style={styles.feltTekst}>{artister[1].name}</Text>
       </View>
     </Pressable>
 
         {/* Felt 3 */}
     <Pressable onPress={() => setvalgtArtist(artister[2].name)}>
-      <View style={styles.felt}>
+      <View style={[styles.felt, { backgroundColor: valgtArtist === artister[2].name ? '#5bb0ff' : "#ddd" }]}>
         <Text style={styles.feltTekst}>{artister[2].name}</Text>
       </View>
     </Pressable>
 
         {/* Felt 4 */}
     <Pressable onPress={() => setvalgtArtist(artister[3].name)}>
-      <View style={styles.felt}>
+      <View style={[styles.felt, { backgroundColor: valgtArtist === artister[3].name ? '#5bb0ff' : "#ddd" }]}>
         <Text style={styles.feltTekst}>{artister[3].name}</Text>
       </View>
     </Pressable>
 
         {/* Felt 5 */}
     <Pressable onPress={() => setvalgtArtist(artister[4].name)}>
-      <View style={styles.felt}>
+      <View style={[styles.felt, { backgroundColor: valgtArtist === artister[4].name ? '#5bb0ff' : "#ddd" }]}>
         <Text style={styles.feltTekst}>{artister[4].name}</Text>
       </View>
     </Pressable>
@@ -83,16 +84,8 @@ valgtArtist: {
 // Standard stil for feltene
   felt: {
     padding:  20,
-    backgroundColor: "#ddd", // Grå bakgrunn
     marginBottom: 10,
     fontSize: 18,
     borderRadius: 8,
-},
-  feltTekst: {
-
-  },
-// Ekstra stil som legges til når feltet er valgt
-  aktivtFelt: {
-    backgroundColor: "#098cff", // Grønn bakgrunn
-},
+}
 });
