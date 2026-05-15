@@ -1,21 +1,20 @@
 // Importerer nødvendige komponenter fra React Native
 import { Pressable, StyleSheet, FlatList, Text, View } from "react-native";
 // Importerer useState for å kunne lagre tilstand (state)
-import { useState } from "react";
-// Importerer liste fra artister.json
-import artister from "../data/artister.json";
-
-
+import { useState, useEffect } from "react";
  
 // Dette er skjermen som vises i første tab
 export default function TabOneScreen() {
-
+  const [artister, setArtister] = useState([]); // add this
   const [ranking, setRanking] = useState([]);
-  const handlePress = (name) => {
-    if (!ranking.includes(name)) {
-      setRanking(prev => [...prev, name]);
-    }
-  };
+
+  // add this
+  useEffect(() => {
+    fetch("https://artists.serv.imavgs.no/artists")
+      .then(res => res.json())
+      .then(data => setArtister(data));
+  }, []);
+  
 
 // Dette er for å sortere artister fra høyest til lavest i rangering
   const sorterteArtister = [...artister].sort((a, b) => { 
