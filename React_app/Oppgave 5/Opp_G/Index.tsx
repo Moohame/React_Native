@@ -30,6 +30,7 @@ export default function TabOneScreen() {
     >
       <View style={[styles.felt, { backgroundColor: valgtArtist === artister[0].name ? '#5bb0ff' : "#ddd" }]}> 
         <Text style={styles.feltTekst}>{artister[0].name}</Text>
+        <Text style={styles.valgtArtist}></Text>
       </View>
     </Pressable>
     
