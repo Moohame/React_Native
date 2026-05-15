@@ -1,5 +1,5 @@
 // Importerer nødvendige komponenter fra React Native
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, FlatList, Text, View } from "react-native";
 // Importerer useState for å kunne lagre tilstand (state)
 import { useState } from "react";
 // Importerer liste fra artister.json
@@ -22,68 +22,27 @@ export default function TabOneScreen() {
 
       <Text style={styles.title}>Kjente artister</Text>
       <Text style={styles.valgtArtist}>
-        {ranking.length < 5 ? `Velg nr. ${ranking.length + 1}` : "Alt er rangert!"}
+        {ranking.length < 6 ? `Velg nr. ${ranking.length + 1}` : "Alt er rangert :)"}
       </Text>
 
-        {/* Felt 1 */}
-    <Pressable 
-      onPress={() => handlePress(artister[0].name)}
-      disabled={ranking.includes(artister[0].name)}
-      style={{ opacity: ranking.includes(artister[0].name) ? 0.6 : 1 }}
+<FlatList
+  data={artister}
+  keyExtractor={(item) => item.name}
+  renderItem={({ item }) => (
+    <Pressable
+      onPress={() => handlePress(item.name)}
+      disabled={ranking.includes(item.name)}
+      style={{ opacity: ranking.includes(item.name) ? 0.6 : 1}}
     >
-      <View style={[styles.felt, { backgroundColor: ranking.includes(artister[0].name) ? '#5bb0ff' : "#ddd" }]}> 
-        <Text style={styles.feltTekst}>{artister[0].name}</Text>
-        <Text style={styles.artistNr}>{ranking.indexOf(artister[0].name) + 1 > 0 ? `(Nr. ${ranking.indexOf(artister[0].name) + 1}) ` : ''}</Text>  
+      <View style={[styles.felt, {backgroundColor: ranking.includes(item.name) ? '#5bb0ff' : '#ddd' }]}>
+        <Text style={styles.feltTekst}>
+          {item.name}
+        </Text>
+        <Text style={styles.artistNr}>{ranking.indexOf(item.name) + 1 > 0 ? `Nr. ${ranking.indexOf(item.name) + 1}` : ''}</Text>
       </View>
     </Pressable>
-
-        {/* Felt 2 */}
-    <Pressable 
-      onPress={() => handlePress(artister[1].name)}
-      disabled={ranking.includes(artister[1].name)}
-      style={{ opacity: ranking.includes(artister[1].name) ? 0.6 : 1 }}
-    >
-      <View style={[styles.felt, { backgroundColor: ranking.includes(artister[1].name) ? '#5bb0ff' : "#ddd" }]}> 
-        <Text style={styles.feltTekst}>{artister[1].name}</Text>
-        <Text style={styles.artistNr}>{ranking.indexOf(artister[1].name) + 1 > 0 ? `(Nr. ${ranking.indexOf(artister[1].name) + 1}) ` : ''}</Text>  
-      </View>
-    </Pressable>
-
-         {/* Felt 3 */}
-    <Pressable 
-      onPress={() => handlePress(artister[2].name)}
-      disabled={ranking.includes(artister[2].name)}
-      style={{ opacity: ranking.includes(artister[2].name) ? 0.6 : 1 }}
-    >
-      <View style={[styles.felt, { backgroundColor: ranking.includes(artister[2].name) ? '#5bb0ff' : "#ddd" }]}> 
-        <Text style={styles.feltTekst}>{artister[2].name}</Text>
-        <Text style={styles.artistNr}>{ranking.indexOf(artister[2].name) + 1 > 0 ? `(Nr. ${ranking.indexOf(artister[2].name) + 1}) ` : ''}</Text>  
-      </View>
-    </Pressable>
-
-        {/* Felt 4 */}
-    <Pressable 
-      onPress={() => handlePress(artister[3].name)}
-      disabled={ranking.includes(artister[3].name)}
-      style={{ opacity: ranking.includes(artister[3].name) ? 0.6 : 1 }}
-    >
-      <View style={[styles.felt, { backgroundColor: ranking.includes(artister[3].name) ? '#5bb0ff' : "#ddd" }]}> 
-        <Text style={styles.feltTekst}>{artister[3].name}</Text>
-        <Text style={styles.artistNr}>{ranking.indexOf(artister[3].name) + 1 > 0 ? `(Nr. ${ranking.indexOf(artister[3].name) + 1}) ` : ''}</Text>  
-      </View>
-    </Pressable>
-
-        {/* Felt 5 */}
-    <Pressable 
-      onPress={() => handlePress(artister[4].name)}
-      disabled={ranking.includes(artister[4].name)}
-      style={{ opacity: ranking.includes(artister[4].name) ? 0.6 : 1 }}
-    >
-      <View style={[styles.felt, { backgroundColor: ranking.includes(artister[4].name) ? '#5bb0ff' : "#ddd" }]}> 
-        <Text style={styles.feltTekst}>{artister[4].name}</Text>
-        <Text style={styles.artistNr}>{ranking.indexOf(artister[4].name) + 1 > 0 ? `(Nr. ${ranking.indexOf(artister[4].name) + 1}) ` : ''}</Text>  
-      </View>
-    </Pressable>
+  )}
+/>
    
 
       {/* Start på nytt */}
